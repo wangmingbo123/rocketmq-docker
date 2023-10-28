@@ -46,12 +46,12 @@ services:
 #      - ./data1/broker/conf/broker.conf:/opt/rocketmq-5.1.4/conf/broker.conf
 #    command: sh mqbroker -c /opt/rocketmq-5.1.4/conf/broker.conf
 
-#  rocketmq-dashboard:
-#    image: apacherocketmq/rocketmq-dashboard
-#    container_name: rocketmq-dashboard
-#    links:
-#      - namesrv
-#    ports:
-#      - 8080:8080
-#    environment:
-#      - JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876
+  rocketmq-dashboard:
+    image: apacherocketmq/rocketmq-dashboard
+    container_name: rocketmq-dashboard
+    links:
+      - namesrv
+    ports:
+      - 8080:8080
+    environment:
+      - JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876
