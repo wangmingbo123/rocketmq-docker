@@ -29,29 +29,29 @@ services:
     command: sh mqbroker -c /opt/rocketmq-5.1.4/conf/broker.conf
 
   #Service for another broker -- broker1
-  broker1:
-    image: apache/rocketmq:5.1.4-alpine
-    container_name: rmqbroker-b
-    links:
-      - namesrv
-    ports:
-      - 10929:10909
-      - 10931:10911
-      - 10932:10912
-    environment:
-      - NAMESRV_ADDR=namesrv:9876
-    volumes:
-      - ./data1/broker/logs:/home/rocketmq/logs
-      - ./data1/broker/store:/home/rocketmq/store
-      - ./data1/broker/conf/broker.conf:/opt/rocketmq-5.1.4/conf/broker.conf
-    command: sh mqbroker -c /opt/rocketmq-5.1.4/conf/broker.conf
+#  broker1:
+#    image: apache/rocketmq:5.1.4-alpine
+#    container_name: rmqbroker-b
+#    links:
+#      - namesrv
+#    ports:
+#      - 10929:10909
+#      - 10931:10911
+#      - 10932:10912
+#    environment:
+#      - NAMESRV_ADDR=namesrv:9876
+#    volumes:
+#      - ./data1/broker/logs:/home/rocketmq/logs
+#      - ./data1/broker/store:/home/rocketmq/store
+#      - ./data1/broker/conf/broker.conf:/opt/rocketmq-5.1.4/conf/broker.conf
+#    command: sh mqbroker -c /opt/rocketmq-5.1.4/conf/broker.conf
 
-  rocketmq-dashboard:
-    image: apacherocketmq/rocketmq-dashboard
-    container_name: rocketmq-dashboard
-    links:
-      - namesrv
-    ports:
-      - 8080:8080
-    environment:
-      - JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876
+#  rocketmq-dashboard:
+#    image: apacherocketmq/rocketmq-dashboard
+#    container_name: rocketmq-dashboard
+#    links:
+#      - namesrv
+#    ports:
+#      - 8080:8080
+#    environment:
+#      - JAVA_OPTS=-Drocketmq.namesrv.addr=namesrv:9876
