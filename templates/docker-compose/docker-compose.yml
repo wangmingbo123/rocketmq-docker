@@ -1,8 +1,8 @@
-version: '3.0'
+version: '3.7'
 services:
   #Service for nameserver
   namesrv:
-    image: apache/rocketmq:5.1.4-alpine
+    image: apache/rocketmq:5.1.4
     container_name: rmqnamesrv
     ports:
       - 9876:9876
@@ -12,7 +12,7 @@ services:
 
   #Service for broker
   broker:
-    image: apache/rocketmq:5.1.4-alpine
+    image: apache/rocketmq:5.1.4
     container_name: rmqbroker
     links:
       - namesrv
