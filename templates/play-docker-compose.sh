@@ -39,4 +39,5 @@ prepare_dir()
 prepare_dir
 
 # Run nameserver and broker
-docker-compose -f ./docker-compose/docker-compose.yml up -d
+#docker-compose -f ./docker-compose/docker-compose.yml up -d
+docker-compose -f ./docker-compose/docker-compose2.yml up -d
