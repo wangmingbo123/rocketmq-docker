@@ -20,4 +20,6 @@ if [ ! -d "`pwd`/data" ]; then
 fi
 
 # Run nameserver and broker on your Kubernetes cluster
-kubectl apply -f kubernetes/deployment.yaml
+#kubectl apply -f kubernetes/deployment.yaml
+#kubectl apply -f kubernetes/deployment2.yaml
+kubectl apply -f kubernetes/deployment3.yaml
