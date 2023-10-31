@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: broker
+    spec:
+      containers:
+        - name: broker
+          image: apache/rocketmq:5.1.4
+          command: [ "sh","mqbroker", "-n","rocketmq-service:9876","-c","/home/rocketmq/conf/broker.conf"]
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 10909
+            - containerPort: 10911
+            - containerPort: 10912
+          volumeMounts:
+            - mountPath: /home/rocketmq/logs
+              name: brokeroptlogs
+            - mountPath: /home/rocketmq/store
+              name: brokeroptstore
+            - mountPath: /home/rocketmq/conf/broker.conf
+              name: brokeroptconf
+      volumes:
+        - name: brokeroptlogs
+          hostPath:
+            path: /data/broker1/logs
+        - name: brokeroptstore
+          hostPath:
+            path: /data/broker1/store
+        - name: brokeroptconf
+          hostPath:
+            path: broker.conf
+  selector:
+    matchLabels:
+      app: broker
